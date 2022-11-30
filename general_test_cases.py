@@ -6,9 +6,10 @@
 from firedrake import *
 from functions_barycentric_mesh import*
 
-N = 80
-bmh = PeriodicUnitSquareBaryMeshHierarchy(N,0)
-mesh =  bmh[-1]
+N = 50
+M = UnitSquareMesh(N,N)
+bmh = BaryMeshHierarchy(M, 0)
+mesh = bmh[-1]
 
 V = FunctionSpace(mesh, 'CG', 2)
 W = VectorFunctionSpace(mesh, 'CG',2)
@@ -20,7 +21,7 @@ x,y = SpatialCoordinate(mesh)
 print("option 1: Test example from literature: u = [-sin(pi*x)*cos(pi*y) + pi*cos(pi*(x+y)), cos(pi*x)*sin(pi*y) + pi*cos(pi*(x+y))] \n")
 print("option 2: I created this example for testing: u = [x-y, x+y-1] \n")
 
-opt = input("Pleace choose a vector field whose div-free part is sought (type 1 or 2):")
+opt = input("Please choose a vector field whose div-free part is sought (type 1 or 2):")
 
 u = Function(W)
 
