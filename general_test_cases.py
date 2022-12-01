@@ -3,6 +3,8 @@
 # u = u_sol + \nabla q
 # \Delta q = nabla.u
 # n. \nabla q = n.u
+# Please note the second test case is not approriate. The u_sol part ,[-y+.5,x-.5] is not tangential
+# at the boundary and hence this is not a good test case. 
 from firedrake import *
 from functions_barycentric_mesh import*
 
