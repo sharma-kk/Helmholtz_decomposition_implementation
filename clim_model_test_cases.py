@@ -3,6 +3,8 @@
 # u = u_sol + \nabla q
 # \Delta q = nabla.u
 # n. \nabla q = n.u
+# In this file, we take velocity fields similar to the ones we might encounter while solving the coupled ocean-atmosphere model
+
 from firedrake import *
 import math 
 
@@ -17,7 +19,7 @@ x,y = SpatialCoordinate(mesh)
 print("option 1: Wind blowing over the ocean from left to right in square patch of the domain \n")
 print("option 2: Circular velocity field of the atmosphere like a cyclone rotating anti-clockwise \n")
 print("option 3: explosion, the air is moving outwards")
-opt = input("Pleace choose from the above options (type 1, 2, or 3) for atm vel field: \n")
+opt = input("Please choose from the above options (type 1, 2, or 3) for atm vel field: \n")
 
 circ = conditional(sqrt(pow(x-0.5, 2) + pow(y-0.5,2)) < 0.25, 1.0, 0.0)
 sq = conditional(And(And(x> 0.25, x < 0.75), And(y > 0.25, y < 0.75)), 1.0, 0.0)
